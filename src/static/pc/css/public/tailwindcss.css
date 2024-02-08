@@ -1,0 +1,18 @@
+@tailwind utilities;
+@tailwind base;
+@tailwind components;
+
+/* 定位剧中 */
+.abs-center {
+    @apply absolute scale-[1] -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2
+}
+
+/* 按钮 */
+.btn {
+    @apply box-border px-[24px] py-[12px] h-[42px] text-[14px] text-white rounded-full !bg-main-1
+}
+
+/* 导航激活状态 */
+.nav-active {
+    @apply bg-main-1 text-white hover:text-white
+}

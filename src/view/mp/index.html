@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        />
+        <title>Document</title>
+        <style>
+            body,
+            html {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header></header>
+        <main>
+            <div class="w-[100px] h-[100px] bg-primary-1">3333</div>
+        </main>
+        <footer></footer>
+        <!-- 全局变量js -->
+        <!-- 在某些参数需要从后端传递给前端全局使用的变量 -->
+        <script>
+            const DOMAIN_NAME_WWW = '';
+        </script>
+        <!-- 当前页面全局变量js -->
+        <!-- 用于存储当前后端传递给前端当前页面使用的局部变量 -->
+        <script>
+            const PAGE = 1;
+            const TATALE = 100;
+        </script>
+        <script>
+            console.log('少量js');
+        </script>
+    </body>
+</html>

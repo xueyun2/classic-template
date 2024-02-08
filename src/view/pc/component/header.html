@@ -1,0 +1,56 @@
+{{ set nav =
+[{name:'首页',link:''},{name:'整形资讯',link:''},{name:'整形医生',link:''},{name:'整形口碑',link:''},{name:'整形问答',link:''},{name:'整形日记',link:''},{name:'整形百科',link:''},{name:'整形社区',link:''},{name:'整形价格',link:''},{name:'整形材料',link:''}]}}
+{{set subnav = [{ name:'整形医院', link:'', },{ name:'整形医生站', link:'', },{ name:'城市站', link:'', },{
+name:'整形项目站', link:'', }]}}
+<header class="border-b-[4px] border-main-1 pb-[20px]">
+    <div class="w-full bg-grey-3">
+        <div class="w-[1200px] m-auto flex justify-between text-[12px] box-border py-[5px] ps-[10px]">
+            <div class="flex items-center">
+                <a title="经典整形网" href="" class="hover:text-[#E31F9C]">经典整形网</a>
+                <div class="flex items-center ml-[14px]">
+                    <i class="icon icon-dianhua !text-[14px]"></i>
+                    <span>400-888-7710</span>
+                </div>
+            </div>
+            <div class="flex items-center">
+                {{ each subnav }}
+                <a href="{{$value.link}}" title="{{$value}}" class="ml-[16px] block hover:text-main-1">
+                    {{$value.name}}
+                </a>
+                {{ /each }}
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-between items-center w-[1200px] m-auto relative py-[18px]">
+        <a href="" title="经典整形网">
+            <img src="/static/icon/login.png" alt="经典整形网" class="w-[190px] h-[68px]" />
+        </a>
+        <div class="flex items-center rounded-full abs-center bg-grey-3 px-[12px]">
+            <input
+                type="text"
+                value=""
+                placeholder="搜索：医院，医生，项目，问答"
+                class="input w-[300px] h-[42px] !bg-grey-3 rounded-full border-none mr-[10px]"
+            />
+            <i class="border-none bg-none icon icon-sousuo block !text-[24px] cursor-pointer !text-main-1"></i>
+        </div>
+        <div class="flex item-center">
+            <img src="/static/icon/avatar.png" alt="" class="w-[42px] h-[42px] cursor-pointer" />
+            <button type="button" class="btn ml-[20px]">在线咨询</button>
+        </div>
+    </div>
+    <div class="w-[1200px] m-auto">
+        <div class="flex items-center justify-between">
+            {{ each nav }}
+
+                <a
+                    href="{{$value.link}}"
+                    title="{{$value.name}}"
+                    class="block py-[4px] px-[12px] {{$data.page==$value.name?'nav-active':''}} rounded-full"
+                    >{{$value.name}}</a
+                >
+
+            {{ /each }}
+        </d>
+    </div>
+</header>

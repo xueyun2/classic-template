@@ -1,0 +1,28 @@
+{
+    "ignorePatterns": [
+        "gulpfile.js"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        // "indent": [
+        //     "error",
+        //     4
+        // ],
+        "camelcase": 1,
+        "comma-dangle": 2,
+        "semi": [
+            "error",
+            "always"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ]
+    }
+}
