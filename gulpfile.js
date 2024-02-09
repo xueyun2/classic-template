@@ -7,7 +7,7 @@ const babel = require('gulp-babel'); //ES6转ES5
 const cssnano = require('cssnano'); //css压缩
 const webserver = require('gulp-webserver'); //本地服务
 const mockServer = require('gulp-mock-server'); //Mock数据模拟服务器
-const template = require('gulp-art-template4');//引入静态模板
+const template = require('gulp-art-template4'); //引入静态模板
 const gulpif = require('gulp-if'); //gulp条件语句
 const sourcemaps = require('gulp-sourcemaps'); //源映射
 const postcss = require('gulp-postcss'); //转换css代码
@@ -24,6 +24,7 @@ const iconfontCss = require('gulp-iconfont-css'); //自动生成iconfont.css文�
 const _ = require('lodash'); //工具函数
 const clean = require('gulp-clean'); //文件清理
 const changedInPlace = require('gulp-changed-in-place'); //只处理已更改的文件
+const replace = require('gulp-replace');
 //默认配置
 let defaultConfig = {
     input: 'src', //指定入口
@@ -91,17 +92,8 @@ const {
 
 //合并配置输出
 function inputConfig() {
-    const {
-        input,
-        output,
-        serverConfig,
-        htmlminConfig,
-        filter,
-        device,
-        iconfontConfig,
-        mockServerConfig,
-        tplData
-    } = _.merge(defaultConfig, config);
+    const { input, output, serverConfig, htmlminConfig, filter, device, iconfontConfig, mockServerConfig, tplData } =
+        _.merge(defaultConfig, config);
 
     const jsInput = `${input}/**/*.js`;
     const cssInput = `${input}/**/*.{css,scss}`;
@@ -168,9 +160,11 @@ function setUglify() {
 function jsTask(path, build) {
     return function javaScript() {
         return src([path, ...filter.js])
-            .pipe(changedInPlace({
-                firstPass: true
-            }))
+            .pipe(
+                changedInPlace({
+                    firstPass: true
+                })
+            )
             .pipe(eslint())
             .pipe(eslint.format())
             .pipe(eslint.failAfterError())
@@ -201,28 +195,14 @@ function cssTask(path, build) {
     return function cssAndScss() {
         return src([path, ...filter.css])
             .pipe(gulpif(ENV, sourcemaps.init()))
-            .pipe(
-                gulpif(
-                    '*.scss',
-                    sass({ outputStyle: 'compressed' }).on(
-                        'error',
-                        sass.logError
-                    )
-                )
-            )
+            .pipe(gulpif('*.scss', sass({ outputStyle: 'compressed' }).on('error', sass.logError)))
             .pipe(
                 changedInPlace({
                     firstPass: true
                 })
             )
             .pipe(gulpif(!ENV, gulpif('*.css', uncss({ html: [htmlInput] }))))
-            .pipe(
-                gulpif(
-                    customPathCondition,
-                    mpCssPostcss(),
-                    gulpif('*.css', cssPostcss())
-                )
-            )
+            .pipe(gulpif(customPathCondition, mpCssPostcss(), gulpif('*.css', cssPostcss())))
             .pipe(gulpif(ENV, sourcemaps.write()))
             .pipe(dest(build));
     };
@@ -271,6 +251,7 @@ function customPathCondition(file) {
     return false;
 }
 //打包HTML
+const pathRegex = new RegExp('/' + input + '/', 'g');
 function htmlTask(paths, build) {
     return function html() {
         return src([paths, ...filter.html])
@@ -290,13 +271,7 @@ function htmlTask(paths, build) {
                     searchPath: ['.']
                 })
             )
-            .pipe(
-                gulpif(
-                    customPathCondition,
-                    mpCssPostcss(),
-                    gulpif('*.css', cssPostcss())
-                )
-            )
+            .pipe(gulpif(customPathCondition, mpCssPostcss(), gulpif('*.css', cssPostcss())))
             .pipe(gulpif('*.css', gulpif(!ENV, uncss({ html: [htmlInput] }))))
             .pipe(
                 changedInPlace({
@@ -307,7 +282,7 @@ function htmlTask(paths, build) {
             .pipe(gulpif(!ENV, gulpif('*.js', setUglify())))
 
             .pipe(gulpif(!ENV, gulpif('*.html', htmlmin(htmlminConfig))))
-
+            .pipe(gulpif('*.html', replace(pathRegex, '/')))
             .pipe(dest(build));
     };
 }
