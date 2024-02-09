@@ -1,5 +1,21 @@
 # 打包传统前端项目文件
 
+## 环境安装
+
+1. 安装node环境
+<https://nodejs.org/en>
+2. 安装pnpm包管理
+
+```shell
+npm install -g pnpm
+# 到项目目录下运行以下命令安装所需依赖
+pnpm i
+# 运行命令打开项目
+pnpm dev
+# 打包项目
+pnpm build
+```
+
 ## 目录结构
 
 ```shell
