@@ -70,7 +70,7 @@ let defaultConfig = {
         mockDir: './mock'
     },
     //设置移动端设计稿宽度
-    viewportWidth:375
+    viewportWidth: 375
 };
 //当前打包模式
 const ENV = process.env.NODE_ENV != 'production' ? true : false;
@@ -95,8 +95,18 @@ const {
 
 //合并配置输出
 function inputConfig() {
-    const { input, output, serverConfig, htmlminConfig, filter, device, iconfontConfig, mockServerConfig, tplData,viewportWidth } =
-        _.merge(defaultConfig, config);
+    const {
+        input,
+        output,
+        serverConfig,
+        htmlminConfig,
+        filter,
+        device,
+        iconfontConfig,
+        mockServerConfig,
+        tplData,
+        viewportWidth
+    } = _.merge(defaultConfig, config);
 
     const jsInput = `${input}/**/*.js`;
     const cssInput = `${input}/**/*.{css,scss}`;
@@ -249,10 +259,8 @@ function otherTask(path, build) {
 function customPathCondition(file) {
     // 检查文件路径中是否包含'mp'且当前分子为移动端上
     const extension = path.extname(file.path);
-    if (file.path.includes(`${device}`) && extension == '.css') {
-        return true;
-    }
-    return false;
+    const regex = new RegExp('\\\\' + device + '\\\\', 'g');
+    return regex.test(file.path) && extension == '.css';
 }
 //打包HTML
 const pathRegex = new RegExp('/' + input + '/', 'g');
