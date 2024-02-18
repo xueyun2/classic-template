@@ -92,7 +92,9 @@ src              # 入口
     //mock服务器配置
     mockServerConfig: {
         mockDir: './mock'
-    }
+    },
+    //移动端设计稿尺寸
+    viewportWidth:375
 }
 ```
 
