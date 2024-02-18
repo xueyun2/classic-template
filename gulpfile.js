@@ -68,7 +68,9 @@ let defaultConfig = {
     //mock服务器配置
     mockServerConfig: {
         mockDir: './mock'
-    }
+    },
+    //设置移动端设计稿宽度
+    viewportWidth:375
 };
 //当前打包模式
 const ENV = process.env.NODE_ENV != 'production' ? true : false;
@@ -87,12 +89,13 @@ const {
     iconfontConfig,
     svgInput,
     mockServerConfig,
-    tplData
+    tplData,
+    viewportWidth
 } = inputConfig();
 
 //合并配置输出
 function inputConfig() {
-    const { input, output, serverConfig, htmlminConfig, filter, device, iconfontConfig, mockServerConfig, tplData } =
+    const { input, output, serverConfig, htmlminConfig, filter, device, iconfontConfig, mockServerConfig, tplData,viewportWidth } =
         _.merge(defaultConfig, config);
 
     const jsInput = `${input}/**/*.js`;
@@ -114,7 +117,8 @@ function inputConfig() {
         iconfontConfig,
         svgInput,
         mockServerConfig,
-        tplData
+        tplData,
+        viewportWidth
     };
 }
 //监听文件，运行指定任务。
@@ -184,7 +188,7 @@ function mpCssPostcss() {
     return postcss([
         tailwindcss(),
         postcssPxToViewport({
-            viewportWidth: 375
+            viewportWidth: viewportWidth
         }),
         autoprefixer(),
         cssnano()
