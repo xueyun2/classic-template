@@ -4,6 +4,7 @@
 
 > 如果出现Downloading [https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.》 1-windows.zip](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
 > 自行下载保存到该目录： C:\Users\Administrator\AppData\Local\Temp\phantomjs\phantomjs-2.1.1-windows.zip
+> 出现`pnpm` 无法识别为命令错误时：`set-ExecutionPolicy RemoteSigned`在命令行中运行命令后，输入A后，回车
 
 1. 安装node环境
 <https://nodejs.org/en>
