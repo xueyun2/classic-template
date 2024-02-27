@@ -8,6 +8,10 @@
 
 ```shell
 npm install -g pnpm
+# 安装gulp打包工具
+pnpm add gulp-cli -g
+# 安装环境依赖
+pnpm add cross-env -g
 # 到项目目录下运行以下命令安装所需依赖
 pnpm i
 # 运行命令打开项目
