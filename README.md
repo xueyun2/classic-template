@@ -12,6 +12,8 @@
 
 ```shell
 npm install -g pnpm
+# pnpm 设置淘宝镜像
+pnpm config set registry https://registry.npmmirror.com/
 # 安装gulp打包工具
 pnpm add gulp-cli -g
 # 安装环境依赖
