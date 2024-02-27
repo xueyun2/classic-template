@@ -31,7 +31,7 @@ let defaultConfig = {
     output: 'build', //指定出口
     device: 'mp', //指定移动端目录名称用于处理css文件中的单位换算，其他目录不做特殊处理。
     filter: {
-        html: [`!./**/component/**/*.html`],
+        html: [`!./**/component/**/*.html`,`!./**/layout/**/*.html`],
         css: [`!./**/tailwindcss.css`, `!./**/iconfont.css`]
     },
     iconfontConfig: {

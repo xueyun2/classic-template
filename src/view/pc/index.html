@@ -1,31 +1,12 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
-        />
-        <meta
-            name="keywords"
-            content="整形咨询,整形预约,整形价格,整形医生,整形医院,整形点评,整形社区,整形日记,整容日记"
-        />
-        <meta
-            name="description"
-            content="经典整形网创办于2010年1，线上对接求美者，线下整合1000多家正规医疗美容机构和5000多名优秀整形医生,通过专业的医学知识和全面客观的机构信息，向广大求美者提供在线医学美容咨询服务。看整形资讯，上经典整形网。"
-        />
-        {{include "./component/globalStyle.html"}}
-        <title>经典整形网</title>
-    </head>
-
-    <body>
-        {{ set home = {page:'首页'} }} {{include "./component/header.html" home }}
-        <main class="text-main-1">首页2</main>
-        {{include "./component/footer.html"}} {{include "./component/globalScript.html"}}
-        <!-- 当前PHP传递js中使用的参数 -->
-        <script></script>
-        <!-- 当前js页面功能模块 -->
-        <script src="/static/pc/js/index.js" defer></script>
-    </body>
-</html>
+{{ extend "./layout/default.html" }}
+{{ set page = '首页' }}
+{{ block "title" }}经典整形网{{ /block }}
+{{ block "content" }}
+<div class="my-title">顶顶顶2</div>
+{{ /block }}
+{{ block "script" }}
+<!-- 当前PHP传递js中使用的参数 -->
+<script></script>
+<!-- 当前js页面功能模块 -->
+<script src="/static/pc/js/index.js" defer></script>
+{{ /block }}

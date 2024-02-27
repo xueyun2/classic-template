@@ -3,5 +3,14 @@
     "semi": true,
     "trailingComma": "none",
     "tabWidth": 4,
-    "printWidth": 120
+    "printWidth": 900,
+    "overrides": [
+        {
+            "files": "*.html",
+            "options": {
+                "printWidth": 9999,
+                "htmlWhitespaceSensitivity": "ignore"
+            }
+        }
+    ]
 }
