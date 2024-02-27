@@ -10,6 +10,7 @@
         <title>{{ block "title" }}{{ /block }}</title>
     </head>
     <body>
+        {{ include "../component/header.html" }}
         <main class="text-main-1">{{ block "content" }}{{ /block }}</main>
         {{ include "../component/globalScript.html" }} {{ block "script" }} {{ /block }}
     </body>

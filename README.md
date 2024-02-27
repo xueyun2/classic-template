@@ -2,6 +2,9 @@
 
 ## 环境安装
 
+> 如果出现Downloading [https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.》 1-windows.zip](https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-windows.zip)
+> 自行下载保存到该目录： C:\Users\Administrator\AppData\Local\Temp\phantomjs\phantomjs-2.1.1-windows.zip
+
 1. 安装node环境
 <https://nodejs.org/en>
 2. 安装pnpm包管理
